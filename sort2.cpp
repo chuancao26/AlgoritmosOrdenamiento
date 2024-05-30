@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <string>
 #include "estadisticas.h"
+#include "SortAlgorithms.hpp" 
 using namespace std;
 
 void insertionSort(int arr[], int size) 
@@ -23,6 +24,7 @@ void insertionSort(int arr[], int size)
 }
 int main(int argc, char *argv[])
 {
+  SortAlgorithms sa;
   Stats stat;
   int registros = 15;
   if (argc < 2) 

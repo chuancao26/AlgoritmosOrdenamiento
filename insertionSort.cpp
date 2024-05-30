@@ -3,6 +3,7 @@
 #include <vector>
 #include <time.h>
 #include <iomanip>
+#include "SortAlgorithms.hpp"
 using namespace std;
 void insertionSort(int arr[], int size)
 {
@@ -37,22 +38,25 @@ void printArray(int arr[], int size)
 }
 int main()
 {
+  SortAlgorithms sa;
   for(int k = 10; k < 51; k = k + 10)
   {
     int size;
     system("./generador 50 >> input");
     vector<double> registros = {};
     ifstream archivo("./input");
-    getline(archivo, size);
+    archivo >> size;
     for (int i = 0; i < 15; i++)
     {
-      int arr[size];
+      vector<int> arr(size);
       for(int j = 0; j < size; j++)
       {
-	getline(archivo, arr[j]);
+        int a;
+        archivo >> a;
+        arr.push_back(a);
       }
       clock_t start = clock();
-      insertionSort(arr, size);
+      sa.bubbleSort(arr);
       clock_t fin = clock();
       double elapsed_time = (double)(fin - start) / CLOCKS_PER_SEC;
       registros.push_back(elapsed_time);
