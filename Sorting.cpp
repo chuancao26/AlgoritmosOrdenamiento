@@ -2,6 +2,7 @@
 #include <fstream>
 #include <vector>
 #include <time.h>
+#include <string>
 #include <iomanip>
 #include "SortAlgorithms.hpp"
 using namespace std;
@@ -39,10 +40,14 @@ void printArray(int arr[], int size)
 int main()
 {
   SortAlgorithms sa;
-  for(int k = 10; k < 51; k = k + 10)
+  int cantidad;
+  cin >> cantidad;
+  cin.ignore();
+  for(int k = 100; k < cantidad; k = k + 100)
   {
     int size;
-    system("./generador 50 >> input");
+    string entradaGenerador = "./generador " + to_string(k) + " > input";
+    system(entradaGenerador.c_str());
     vector<double> registros = {};
     ifstream archivo("./input");
     archivo >> size;
@@ -52,16 +57,15 @@ int main()
       for(int j = 0; j < size; j++)
       {
         int a;
-        archivo >> a;
-        arr.push_back(a);
+        archivo >> arr[j];
       }
       clock_t start = clock();
-      sa.bubbleSort(arr);
+      sa.quickSort(arr);
       clock_t fin = clock();
       double elapsed_time = (double)(fin - start) / CLOCKS_PER_SEC;
       registros.push_back(elapsed_time);
     }
-    cout << media(registros) << endl;
+    cout << size << ' ' << media(registros) << endl;
     /*
     double media = stat.average(registros);
     double std = stat.std(media, registros);

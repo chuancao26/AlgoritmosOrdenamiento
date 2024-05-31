@@ -9,6 +9,7 @@ int main(int argc, char *argv[])
     fprintf(stderr, "Debe haber un argumento para poder compilar\n");
     return 1;
   }
+  system("rm input");
   int n = atoi(argv[1]);
   srand(time(NULL));
   printf("%d\n", n);
